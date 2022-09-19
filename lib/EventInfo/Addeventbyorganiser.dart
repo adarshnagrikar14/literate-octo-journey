@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, must_be_immutable, invalid_required_positional_param, use_key_in_widget_constructors, avoid_print, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'dart:convert';
@@ -11,67 +13,62 @@ class AddEvent extends StatefulWidget {
 }
 
 class _AddEventState extends State<AddEvent> {
-  TextEditingController id=TextEditingController();
-  TextEditingController name=TextEditingController();
-  TextEditingController date=TextEditingController();
-  TextEditingController fin=TextEditingController();
-  TextEditingController venue=TextEditingController();
-  TextEditingController price=TextEditingController();
-  TextEditingController minor=TextEditingController();
-  TextEditingController description=TextEditingController();
-  TextEditingController o_username=TextEditingController();
+  TextEditingController id = TextEditingController();
+  TextEditingController name = TextEditingController();
+  TextEditingController date = TextEditingController();
+  TextEditingController fin = TextEditingController();
+  TextEditingController venue = TextEditingController();
+  TextEditingController price = TextEditingController();
+  TextEditingController minor = TextEditingController();
+  TextEditingController description = TextEditingController();
+  TextEditingController o_username = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    late String username=widget.username;
-    var url="http://localhost:8080/addevents";
-    var dio= Dio();
-    void postevent() async{
-      var data=jsonEncode({
-        "id":id.text,
-        "name":name.text.toString(),
-        "date":date.text.toString(),
-        "fin":fin.text,
-        "venue":venue.text.toString(),
+    late String username = widget.username;
+    var url = "http://localhost:8080/addevents";
+    var dio = Dio();
+    void postevent() async {
+      var data = jsonEncode({
+        "id": id.text,
+        "name": name.text.toString(),
+        "date": date.text.toString(),
+        "fin": fin.text,
+        "venue": venue.text.toString(),
         "price": price.text,
         "minor": minor.text,
-        "description":description.text.toString(),
-        "o_username":username.toString(),
-
+        "description": description.text.toString(),
+        "o_username": username.toString(),
       });
       try {
         Response response = await dio.post(url, data: data);
         print(response.data);
-      }catch(err){
+      } catch (err) {
         print(err);
       }
       Navigator.of(context).pop();
-
-
     }
 
     return Scaffold(
         backgroundColor: Colors.deepPurple,
-        body:SafeArea(
+        body: SafeArea(
           child: SingleChildScrollView(
-
             child: Padding(
               padding: EdgeInsets.all(20),
               child: Column(
                 children: <Widget>[
-                  SizedBox(height: MediaQuery
-                      .of(context)
-                      .size
-                      .height * 0.05,),
-                  Text("Add Event",
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.05,
+                  ),
+                  Text(
+                    "Add Event",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 45,
-                    )
-                    ,),
-                  SizedBox(height: MediaQuery
-                      .of(context)
-                      .size
-                      .height * 0.03,),
+                    ),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.03,
+                  ),
                   TextField(
                     controller: id,
                     keyboardType: TextInputType.number,
@@ -81,25 +78,26 @@ class _AddEventState extends State<AddEvent> {
                     ),
                     decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                            color: Colors.blueGrey, width: 3),
+                        borderSide:
+                            const BorderSide(color: Colors.blueGrey, width: 3),
                         borderRadius: BorderRadius.circular(40.0),
                       ),
                       labelText: "id",
                       alignLabelWithHint: true,
-                      labelStyle: const TextStyle(fontSize: 24, color: Colors.blueGrey,fontWeight: FontWeight.w600),
+                      labelStyle: const TextStyle(
+                          fontSize: 24,
+                          color: Colors.blueGrey,
+                          fontWeight: FontWeight.w600),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                            color: Colors.blueGrey, width: 3),
+                        borderSide:
+                            const BorderSide(color: Colors.blueGrey, width: 3),
                         borderRadius: BorderRadius.circular(40.0),
                       ),
-
                     ),
                   ),
-                  SizedBox(height: MediaQuery
-                      .of(context)
-                      .size
-                      .height * 0.03,),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.03,
+                  ),
                   TextField(
                     controller: name,
                     keyboardType: TextInputType.name,
@@ -109,25 +107,26 @@ class _AddEventState extends State<AddEvent> {
                     ),
                     decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                            color: Colors.blueGrey, width: 3),
+                        borderSide:
+                            const BorderSide(color: Colors.blueGrey, width: 3),
                         borderRadius: BorderRadius.circular(40.0),
                       ),
                       labelText: " Name",
                       alignLabelWithHint: true,
-                      labelStyle: const TextStyle(fontSize: 24, color: Colors.blueGrey,fontWeight: FontWeight.w600),
+                      labelStyle: const TextStyle(
+                          fontSize: 24,
+                          color: Colors.blueGrey,
+                          fontWeight: FontWeight.w600),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                            color: Colors.blueGrey, width: 3),
+                        borderSide:
+                            const BorderSide(color: Colors.blueGrey, width: 3),
                         borderRadius: BorderRadius.circular(40.0),
                       ),
-
                     ),
                   ),
-                  SizedBox(height: MediaQuery
-                      .of(context)
-                      .size
-                      .height * 0.03,),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.03,
+                  ),
                   TextField(
                     controller: date,
                     keyboardType: TextInputType.name,
@@ -137,25 +136,26 @@ class _AddEventState extends State<AddEvent> {
                     ),
                     decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                            color: Colors.blueGrey, width: 3),
+                        borderSide:
+                            const BorderSide(color: Colors.blueGrey, width: 3),
                         borderRadius: BorderRadius.circular(40.0),
                       ),
                       labelText: "Date(YYYY-MM-DD)",
                       alignLabelWithHint: true,
-                      labelStyle: const TextStyle(fontSize: 24, color: Colors.blueGrey,fontWeight: FontWeight.w600),
+                      labelStyle: const TextStyle(
+                          fontSize: 24,
+                          color: Colors.blueGrey,
+                          fontWeight: FontWeight.w600),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                            color: Colors.blueGrey, width: 3),
+                        borderSide:
+                            const BorderSide(color: Colors.blueGrey, width: 3),
                         borderRadius: BorderRadius.circular(40.0),
                       ),
-
                     ),
                   ),
-                  SizedBox(height: MediaQuery
-                      .of(context)
-                      .size
-                      .height * 0.03,),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.03,
+                  ),
                   TextField(
                     controller: fin,
                     keyboardType: TextInputType.number,
@@ -165,25 +165,26 @@ class _AddEventState extends State<AddEvent> {
                     ),
                     decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                            color: Colors.blueGrey, width: 3),
+                        borderSide:
+                            const BorderSide(color: Colors.blueGrey, width: 3),
                         borderRadius: BorderRadius.circular(40.0),
                       ),
                       labelText: "Event Finished",
                       alignLabelWithHint: true,
-                      labelStyle: const TextStyle(fontSize: 24, color: Colors.blueGrey,fontWeight: FontWeight.w600),
+                      labelStyle: const TextStyle(
+                          fontSize: 24,
+                          color: Colors.blueGrey,
+                          fontWeight: FontWeight.w600),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                            color: Colors.blueGrey, width: 3),
+                        borderSide:
+                            const BorderSide(color: Colors.blueGrey, width: 3),
                         borderRadius: BorderRadius.circular(40.0),
                       ),
-
                     ),
                   ),
-                  SizedBox(height: MediaQuery
-                      .of(context)
-                      .size
-                      .height * 0.03,),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.03,
+                  ),
                   TextField(
                     controller: venue,
                     keyboardType: TextInputType.text,
@@ -193,25 +194,26 @@ class _AddEventState extends State<AddEvent> {
                     ),
                     decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                            color: Colors.blueGrey, width: 3),
+                        borderSide:
+                            const BorderSide(color: Colors.blueGrey, width: 3),
                         borderRadius: BorderRadius.circular(40.0),
                       ),
                       labelText: "Venue",
                       alignLabelWithHint: true,
-                      labelStyle: const TextStyle(fontSize: 24, color: Colors.blueGrey,fontWeight: FontWeight.w600),
+                      labelStyle: const TextStyle(
+                          fontSize: 24,
+                          color: Colors.blueGrey,
+                          fontWeight: FontWeight.w600),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                            color: Colors.blueGrey, width: 3),
+                        borderSide:
+                            const BorderSide(color: Colors.blueGrey, width: 3),
                         borderRadius: BorderRadius.circular(40.0),
                       ),
-
                     ),
                   ),
-                  SizedBox(height: MediaQuery
-                      .of(context)
-                      .size
-                      .height * 0.03,),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.03,
+                  ),
                   TextField(
                     controller: price,
                     keyboardType: TextInputType.number,
@@ -221,25 +223,26 @@ class _AddEventState extends State<AddEvent> {
                     ),
                     decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                            color: Colors.blueGrey, width: 3),
+                        borderSide:
+                            const BorderSide(color: Colors.blueGrey, width: 3),
                         borderRadius: BorderRadius.circular(40.0),
                       ),
                       labelText: "Price",
                       alignLabelWithHint: true,
-                      labelStyle: const TextStyle(fontSize: 24, color: Colors.blueGrey,fontWeight: FontWeight.w600),
+                      labelStyle: const TextStyle(
+                          fontSize: 24,
+                          color: Colors.blueGrey,
+                          fontWeight: FontWeight.w600),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                            color: Colors.blueGrey, width: 3),
+                        borderSide:
+                            const BorderSide(color: Colors.blueGrey, width: 3),
                         borderRadius: BorderRadius.circular(40.0),
                       ),
-
                     ),
                   ),
-                  SizedBox(height: MediaQuery
-                      .of(context)
-                      .size
-                      .height * 0.03,),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.03,
+                  ),
                   TextField(
                     controller: minor,
                     keyboardType: TextInputType.number,
@@ -249,26 +252,26 @@ class _AddEventState extends State<AddEvent> {
                     ),
                     decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                            color: Colors.blueGrey, width: 3),
+                        borderSide:
+                            const BorderSide(color: Colors.blueGrey, width: 3),
                         borderRadius: BorderRadius.circular(40.0),
                       ),
                       labelText: "Minor",
                       alignLabelWithHint: true,
-                      labelStyle: const TextStyle(fontSize: 24, color: Colors.blueGrey,fontWeight: FontWeight.w600),
+                      labelStyle: const TextStyle(
+                          fontSize: 24,
+                          color: Colors.blueGrey,
+                          fontWeight: FontWeight.w600),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                            color: Colors.blueGrey, width: 3),
+                        borderSide:
+                            const BorderSide(color: Colors.blueGrey, width: 3),
                         borderRadius: BorderRadius.circular(40.0),
                       ),
-
                     ),
                   ),
-                  SizedBox(height: MediaQuery
-                      .of(context)
-                      .size
-                      .height * 0.03,),
-
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.03,
+                  ),
                   TextField(
                     controller: description,
                     keyboardType: TextInputType.multiline,
@@ -279,37 +282,31 @@ class _AddEventState extends State<AddEvent> {
                     ),
                     decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                            color: Colors.blueGrey, width: 3),
+                        borderSide:
+                            const BorderSide(color: Colors.blueGrey, width: 3),
                         borderRadius: BorderRadius.circular(40.0),
                       ),
                       labelText: "Description",
                       alignLabelWithHint: true,
-                      labelStyle: const TextStyle(fontSize: 24, color: Colors.blueGrey,fontWeight: FontWeight.w600),
+                      labelStyle: const TextStyle(
+                          fontSize: 24,
+                          color: Colors.blueGrey,
+                          fontWeight: FontWeight.w600),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                            color: Colors.blueGrey, width: 3),
+                        borderSide:
+                            const BorderSide(color: Colors.blueGrey, width: 3),
                         borderRadius: BorderRadius.circular(40.0),
                       ),
-
                     ),
                   ),
-                  SizedBox(height: MediaQuery
-                      .of(context)
-                      .size
-                      .height * 0.03,),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.03,
+                  ),
                   InkWell(
-                    onTap: ()=>postevent(),
+                    onTap: () => postevent(),
                     child: Container(
-                      height: MediaQuery
-                          .of(context)
-                          .size
-                          .height * 0.07,
-                      width: MediaQuery
-                          .of(context)
-                          .size
-                          .width * 0.8,
-
+                      height: MediaQuery.of(context).size.height * 0.07,
+                      width: MediaQuery.of(context).size.width * 0.8,
                       decoration: BoxDecoration(
                         color: Colors.black,
                         borderRadius: BorderRadius.circular(30),
@@ -325,15 +322,10 @@ class _AddEventState extends State<AddEvent> {
                       ),
                     ),
                   ),
-
-
                 ],
               ),
             ),
-
-
           ),
-        )
-    );
+        ));
   }
 }
